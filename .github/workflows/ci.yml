@@ -1,0 +1,19 @@
+name: CI
+
+# Variables
+env:
+  IP_ROOT: ./test/designs/.ip-root
+# Events that trigger workflow
+on:
+  # Runs on all pushes to branches
+  push:
+
+jobs:
+  test:
+    name: Try Lima
+    runs-on: macos-14
+    steps:
+      - name: Install and Start Lima
+        run: |
+          brew install lima
+          limactl start
