@@ -13,7 +13,13 @@ jobs:
     name: Try Lima
     runs-on: macos-14
     steps:
+      - uses: actions/checkout@v3
       - name: Install and Start Lima
         run: |
           brew install lima
+      - name: Create Lima VM
+        run: |
+          limactl create --name=default $PWD/lima.tpl
+      - name: Start Lima?
+        run: |
           limactl start
